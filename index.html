@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Free Throw Sim</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="myScripts.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>Free Throw Sim</h1>
+        
+        <div class="btn-group" data-toggle="buttons">
+            <label id="dh" class="btn btn-primary active">
+                <input type="radio" name="options" id="option1" checked=""> Dwight Howard
+            </label>
+            <label class="btn btn-primary">
+                <input type="radio" name="options" id="option2"> Somebody else
+            </label>
+        </div><br>
+        Sims:<input type="text" id="sims" value="1">
+        <button id="start" class="btn btn-primary">Go</button>
+
+
+        <div id="results">
+        </div>
+    </body>
+</html>
