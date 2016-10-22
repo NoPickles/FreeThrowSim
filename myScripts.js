@@ -15,72 +15,91 @@ var source = document.createElement('source');
 
 
 var ftpct = dwightH.ftpct;
-var made = 0;
-var miss = 0;
+var index = 0;
+var results = [];
 
 $(function() {
     console.log( "ready!" );
 
     $("#dh").click(function(){
-        console.log(5);
         ftpct = dwightH.ftpct;
     })
 
     $( "#start" ).click(function() {
-        made = 0;
-        miss = 0;
-        var attempts = document.getElementById("sims").value;
+        
+        var attempts = 0;
+        attempts = document.getElementById("sims").value;
         if(attempts > 100){
             alert("Number is too High.");
             return;
         }
-        
+        results = [];
         ftSimulation(attempts);
+        
+        playVid();
+    })
+
+    $("#ftVideo").bind('ended', function(){
+        console.log("vid end");
+        index++;
+        if(typeof(results[index]) === "boolean" ){  
+        playVid();
+        }
+        else{
+            return;
+        }
     })
 
     
     });
-function playVid(callback) {
-    vid.play();
-     document.getElementById('ftVideo').addEventListener('ended',callback,false);
-
+function playVid() {
+    
+    if(results[index]===true){
+        console.log(index);
+        ftMade();
+        }
+    else{
+        console.log(index);
+        ftMiss();
+        
+    }
 
     }
-function ftShot(pct){
-        var rand = Math.random();
-        return (pct > rand);
-    }
 
-function updateResult(){
-    $("#results").html(
-        '<h4>awdad</h4>'
-    )
-    }   
+function ftMiss(){
+    source.setAttribute('src', 'vids/dhMiss.mp4');
+    vid.appendChild(source);
+    vid.load();
+    vid.addEventListener('loadeddata', function() { 
+        console.log("miss");
+        vid.play();
+
+        }, false);
+}
 
 function ftSimulation(attempt){
-
-    for (var index = attempt; index > 0; index--) {
-        if (ftShot(ftpct)) {
-            ftMade( function(){});
-            made++;
-            console.log(made + ":Made");
-        }
-        else{
-            console.log(miss + ":Miss");
-        }
+    for (var i = attempt; i > 0; i--){
+        results.push(ftShot(ftpct));
     }
+    console.log(results);
     
-    console.log("for loop over");
-    
+    playVid();
     }
 
-function ftMade(callback){
+
+function ftMade(){
     source.setAttribute('src', 'vids/dhMake.mp4');
     vid.appendChild(source);
-    playVid(function(){
-        console.log("ft callback")
-        callback(); 
-    });
+    vid.load();
+    vid.addEventListener('loadeddata', function() { 
+        vid.play();
+        }, false);
     
     }
+
+
+function ftShot(pct){
+    var rand = Math.random();
+    return (pct > rand);
+}
 
