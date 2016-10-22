@@ -35,7 +35,6 @@ $(function() {
         }
         results = [];
         ftSimulation(attempts);
-        
         playVid();
     })
 
@@ -53,7 +52,6 @@ $(function() {
     
     });
 function playVid() {
-    
     if(results[index]===true){
         console.log(index);
         ftMade();
@@ -83,7 +81,6 @@ function ftSimulation(attempt){
     }
     console.log(results);
     
-    playVid();
     }
 
 
@@ -101,5 +98,6 @@ function ftMade(){
 function ftShot(pct){
     var rand = Math.random();
     return (pct > rand);
+    c
 }
 
