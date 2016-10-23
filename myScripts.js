@@ -28,6 +28,7 @@ $(function() {
     $( "#start" ).click(function() {
         
         var attempts = 0;
+        index = 0;
         attempts = document.getElementById("sims").value;
         if(attempts > 100){
             alert("Number is too High.");
