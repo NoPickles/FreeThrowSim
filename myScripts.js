@@ -30,7 +30,7 @@ $(function() {
         var attempts = 0;
         index = 0;
         attempts = document.getElementById("sims").value;
-        if(attempts > 100){
+        if(attempts > 100000){
             alert("Number is too High.");
             return;
         }
@@ -63,17 +63,19 @@ function playVid() {
         
     }
 
+    vid.addEventListener('loadeddata', function() { 
+        vid.play();
+
+        }, false);
+
     }
 
 function ftMiss(){
     source.setAttribute('src', 'vids/dhMiss.mp4');
     vid.appendChild(source);
     vid.load();
-    vid.addEventListener('loadeddata', function() { 
-        console.log("miss");
-        vid.play();
-
-        }, false);
+    console.log("miss");
+    
 }
 
 function ftSimulation(attempt){
@@ -89,9 +91,7 @@ function ftMade(){
     source.setAttribute('src', 'vids/dhMake.mp4');
     vid.appendChild(source);
     vid.load();
-    vid.addEventListener('loadeddata', function() { 
-        vid.play();
-        }, false);
+    console.log("made");
     
     }
 
@@ -99,6 +99,6 @@ function ftMade(){
 function ftShot(pct){
     var rand = Math.random();
     return (pct > rand);
-    c
+    
 }
 
